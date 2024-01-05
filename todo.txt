@@ -1,0 +1,4 @@
+1. Add the image on each news item
+2. Add the date of the news
+3. Change the html name to index.html
+4. Make the title a link. On the click of the link, it should take you to the source news page

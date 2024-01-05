@@ -24,13 +24,13 @@ function loadNews(inputSearch = "") {
         users = data;
       }
 
-      var fullPageString = document.getElementById("page_container");
-      for (let i = 0; i < users.length; i++) {
-        var userElementString = `
+      // var fullPageString = document.getElementById("page_container");
+      // for (let i = 0; i < users.length; i++) {
+      //   var userElementString = `
             <figure>
             <p>${users[i].title}</p>
             <article>${users[i].description}</article>
-            <a href="images/team.jpg">Click image</a>
+            
             <figcaption>${users[i].content}</figcaption>
             <hr>
          </figure>
