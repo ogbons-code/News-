@@ -14,7 +14,7 @@ function loadNews(inputSearch = "") {
   inputSearch = inputSearch ? inputSearch : "tesla";
   let url = `https://newsapi.org/v2/everything?q=${inputSearch}&apiKey=886b5f9aaf0643f1be5a9134a255e56e`;
 
-  var fullPageString = document.getElementById("page_container");
+  var fullPage = document.getElementById("page_container");
 
   fetch(url)
     .then((response) => {
