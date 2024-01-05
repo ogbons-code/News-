@@ -2,3 +2,62 @@
 2. Add the date of the news
 3. Change the html name to index.html
 4. Make the title a link. On the click of the link, it should take you to the source news page
+
+
+
+loadNews();
+
+document.getElementById("searchUsers").addEventListener("keyup", (e) => {
+  var inputSearch = e.target.value;
+  loadNews(inputSearch);
+});
+
+function loadNews(inputSearch = "") {
+  var users = [];
+
+  const url =
+    "https://newsapi.org/v2/everything?q=tesla&apiKey=886b5f9aaf0643f1be5a9134a255e56e";
+
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log("users", data.articles);
+
+      if (inputSearch) {
+        users = data.articles.filter(function (item) {
+          return item.articles.includes(inputSearch);
+        });
+        console.log(users);
+      } else {
+        users = data.articles;
+      }
+    });
+
+  const fullPageDiv = document.getElementById("page_container");
+  const listedDiv = document.createDocumentFragment();
+  for (let i = 0; i < users.length; i++) {
+    page_container.map(function (divContainer) {
+      let images = document.createElement("img");
+      let title = document.createAttribute("a");
+      let descriptionTag = document.createElement("article");
+      let contentTag = document.createElement("figcaption");
+      let publishedDate = document.createElement("p");
+
+      images.innerHTML = `${users[i].urlToImage}`;
+      title.innerHTML = `${users[i].title}`;
+      descriptionTag.innerHTML = `${users[i].description}`;
+      contentTag.innerHTML = `${users[i].content}`;
+      publishedDate.innerHTML = `${users[i].publishedAt}`;
+
+      fullPageDiv.appendChild(images);
+      fullPageDiv.appendChild(title);
+      fullPageDiv.appendChild(descriptionTag);
+      fullPageDiv.appendChild(contentTag);
+      fullPageDiv.appendChild(publishedDate);
+    });
+  }
+
+  fullPageDiv.appendChild(listedDiv);
+}
