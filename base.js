@@ -1,5 +1,8 @@
 loadNews();
 
+// var url =
+//   "https://newsapi.org/v2/everything?q=tesla&apiKey=886b5f9aaf0643f1be5a9134a255e56e";
+
 document.getElementById("searchUsers").addEventListener("keyup", (e) => {
   var inputSearch = e.target.value;
   loadNews(inputSearch);
@@ -24,16 +27,18 @@ function loadNews(inputSearch = "") {
         users = data;
       }
 
-      // var fullPageString = document.getElementById("page_container");
-      // for (let i = 0; i < users.length; i++) {
-      //   var userElementString = `
-            <figure>
-            <p>${users[i].title}</p>
+      var fullPageString = document.getElementById("page_container");
+      for (let i = 0; i < users.length; i++) {
+        var userElementString = `
+
+        <figure>
+            <img src="images/team.jpg" alt="football team">
+            <a href="${users[i].url}">${users[i].title}</a>
             <article>${users[i].description}</article>
-            
             <figcaption>${users[i].content}</figcaption>
-            <hr>
-         </figure>
+            <p>${users[i].publishedAt}</p>
+
+        </figure>
       `;
 
         const parser = new DOMParser();
